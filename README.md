@@ -1,5 +1,8 @@
 # EX. NO: 1(A) : IMPLEMENTATION OF CAESAR CIPHER
 
+### Name: Kiruthiga.B
+### Reg.no:212224040160
+
 ## AIM:
 To implement the simple substitution technique named Caesar cipher using C language.
 
@@ -17,7 +20,49 @@ STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
 
+```
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[100];
+    int key, i;
+
+    printf("Enter the plain text: ");
+    scanf("%s", text);
+
+    printf("Enter the key value: ");
+    scanf("%d", &key);
+
+    for(i = 0; text[i] != '\0'; i++)
+    {
+        if(text[i] >= 'A' && text[i] <= 'Z')
+        {
+            if(key >= 0)
+                text[i] = ((text[i] - 'A' + key) % 26) + 'A';
+            else
+                text[i] = ((text[i] - 'A' + key + 26) % 26) + 'A';
+        }
+        else if(text[i] >= 'a' && text[i] <= 'z')
+        {
+            if(key >= 0)
+                text[i] = ((text[i] - 'a' + key) % 26) + 'a';
+            else
+                text[i] = ((text[i] - 'a' + key + 26) % 26) + 'a';
+        }
+    }
+
+    printf("Cipher Text: %s\n", text);
+
+    return 0;
+}
+```
+
 ## OUTPUT:
+
+<img width="425" height="243" alt="image" src="https://github.com/user-attachments/assets/d0823b3c-695d-4cbf-98fd-9bdbef71538f" />
+
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
