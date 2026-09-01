@@ -21,47 +21,45 @@ STEP-5: Display the cipher text obtained above.
 ## PROGRAM:
 
 ```
-#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-    char text[100];
-    int key, i;
-
-    printf("Enter the plain text: ");
-    scanf("%s", text);
-
-    printf("Enter the key value: ");
-    scanf("%d", &key);
-
-    for(i = 0; text[i] != '\0'; i++)
-    {
-        if(text[i] >= 'A' && text[i] <= 'Z')
-        {
-            if(key >= 0)
-                text[i] = ((text[i] - 'A' + key) % 26) + 'A';
-            else
-                text[i] = ((text[i] - 'A' + key + 26) % 26) + 'A';
-        }
-        else if(text[i] >= 'a' && text[i] <= 'z')
-        {
-            if(key >= 0)
-                text[i] = ((text[i] - 'a' + key) % 26) + 'a';
-            else
-                text[i] = ((text[i] - 'a' + key + 26) % 26) + 'a';
-        }
-    }
-
-    printf("Cipher Text: %s\n", text);
-
-    return 0;
+#include <stdio.h> 
+#include <string.h> 
+#include <ctype.h> 
+int main() 
+{ 
+    char plain[10],cipher[10]; 
+    int key,i,length; 
+    int result; 
+    printf(" Enter the plain text:"); 
+    scanf("%s", plain); 
+    printf(" Enter the key value:"); 
+    scanf("%d", &key); 
+    printf(" Plain Text: %s", plain); 
+    printf("\n Encypted Text:"); 
+    for(i=0, length = strlen(plain); i<length; i++) 
+    { 
+        cipher[i]=plain[i] + key; 
+        if (isupper(plain[i]) && (cipher[i] > 'Z')) 
+        cipher[i] = cipher[i] - 26; 
+        if (islower(plain[i]) && (cipher[i] > 'z')) 
+        cipher[i] = cipher[i] - 26; 
+        printf("%c", cipher[i]); 
+    } 
+    printf("\n After Deryption: "); 
+    for(i=0;i<length;i++) 
+    { 
+        plain[i]=cipher[i]-key; 
+        if(isupper(cipher[i])&&(plain[i]<'A')) 
+        plain[i]=plain[i]+26; 
+        if(islower(cipher[i])&&(plain[i]<'a')) 
+        plain[i]=plain[i]+26; 
+        printf("%c",plain[i]); 
+    } 
 }
 ```
-
 ## OUTPUT:
 
-<img width="425" height="243" alt="image" src="https://github.com/user-attachments/assets/d0823b3c-695d-4cbf-98fd-9bdbef71538f" />
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/fb005315-dcc0-4221-8796-323f524ee6a2" />
+
 
 
 ## RESULT :
